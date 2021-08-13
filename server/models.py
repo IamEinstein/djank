@@ -36,8 +36,7 @@ class User(models.Model):
                     response.set_cookie(
                         "user-identity", str(self.unique_id), max_age=31556952)
                     return response
-                else:
-                    return render(request, "main/login.html", context={"error": "Password is incorrect"})
+                return render(request, "main/login.html", context={"error": "Password is incorrect"})
             else:
                 if bcrypt.checkpw(bytes(pwd, 'utf-8'), self.password):
                     response = render(request, 'main/logout.html',
@@ -45,8 +44,7 @@ class User(models.Model):
                                                "text": "Logging you in"})
                     response.set_cookie("user-identity", str(self.unique_id))
                     return response
-                else:
-                    return render(request, "main/login.html", context={"error": "Password is incorrect"})
+                return render(request, "main/login.html", context={"error": "Password is incorrect"})
         elif bot == True:
             return bcrypt.checkpw(bytes(pwd, 'utf-8'), bytes(self.password, 'utf-8'))
 

@@ -30,5 +30,4 @@ class BotTransactionSerializer(serializers.Serializer):
     def check_type(self):
         if self.type == "add" or self.type == "withdraw":
             return True
-        else:
-            return False
+        return False

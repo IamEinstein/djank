@@ -31,8 +31,7 @@ class MailView(View):
                     id = Query.objects.create(user=user, mail=user.email)
                     send__mail(id, user.email, request, user)
                     return render(request, "mail/sent.html")
-                else:
-                    return redirect(f"http://{request.META['HTTP_HOST']}/mail?not_verified=true")
+                return redirect(f"http://{request.META['HTTP_HOST']}/mail?not_verified=true")
             else:
                 return redirect(f"http://{request.META['HTTP_HOST']}/mail?mail_invalid=true")
 
@@ -49,8 +48,7 @@ class ResetPasswordView(View):
             if query.unique_id_2 == id2:
                 user = query.user
                 return render(request, "mail/reset_pwd.html", {"user": user})
-            else:
-                raise Http404
+            raise Http404
 
     def post(self, request):
         new_pwd = request.POST['new_password']
@@ -84,5 +82,4 @@ class VerifyMail(View):
                 user.email_is_verified = True
                 user.save()
                 return render(request, "mail/verified.html")
-            else:
-                raise Http404
+            raise Http404

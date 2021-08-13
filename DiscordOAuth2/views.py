@@ -33,9 +33,7 @@ class LoginView(View):
                     return HttpResponse("You have not linked your discord username")
 
             return redirect("main:account")
-
-        else:
-            return redirect("main:login")
+        return redirect("main:login")
 # Getting the user
 
 

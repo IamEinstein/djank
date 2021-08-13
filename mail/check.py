@@ -11,5 +11,4 @@ def check_if_key_is_valid(ids):
             pk = id.pk
             id.delete()
             return False
-        else:
-            return True
+        return True

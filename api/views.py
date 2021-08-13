@@ -35,9 +35,8 @@ class LoginAPIView(APIView):
                     return Response(status=status.HTTP_200_OK, data=UserSerializer(user).data)
 
             return Response(status=status.HTTP_403_FORBIDDEN, data={"error": "error"})
-        else:
-            print("INVALID FORM")
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+        print("INVALID FORM")
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class GetBalanceAPIView(APIView):
