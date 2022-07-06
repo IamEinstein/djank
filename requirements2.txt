@@ -1,5 +1,5 @@
 ﻿aiohttp==3.7.4.post0
-cryptography==3.4.7
+cryptography==37.0.4
 discord.py==1.7.3
 gcloud==0.18.3
 googleapis-common-protos==1.53.0
